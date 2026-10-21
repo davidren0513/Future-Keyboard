@@ -1,0 +1,32 @@
+name: Import reviewed source
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify and extract reviewed archive
+        shell: python
+        run: |
+          import hashlib,pathlib,zipfile
+          archive=pathlib.Path('future-keyboard-bootstrap.zip')
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()=='f84035b9643c92f63fb02f247231fb91f7d8408ddc5c024bf309b4dcce5e1291'
+          with zipfile.ZipFile(archive) as z:
+              for name in z.namelist():
+                  p=pathlib.PurePosixPath(name)
+                  assert not p.is_absolute() and '..' not in p.parts and '.git' not in p.parts
+                  assert not name.startswith('.github/workflows/')
+              z.extractall('.')
+          archive.unlink()
+      - name: Commit project sources
+        run: |
+          chmod +x gradlew
+          git config user.name 'David Ren'
+          git config user.email '78021326+davidren0513@users.noreply.github.com'
+          git add -A
+          git commit -m 'Publish Future Keyboard 0.6.0 source, documentation and privacy checks' -m 'Reviewed local source commit: feacc0f6416de09303e4fa0452ad8c3d3a5a4b81. Archive SHA-256 verified before extraction.'
+          git push origin HEAD:main
