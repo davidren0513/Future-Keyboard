@@ -1,0 +1,8 @@
+{
+  "version": "0.6.0",
+  "unit_tests": 18,
+  "emulator_interaction_checks": 19,
+  "network_permissions": [],
+  "emulator": "Android 15 API 35 ARM64, 1080x2400, density 440",
+  "scope": "See docs/VALIDATION.md; not an all-device guarantee."
+}

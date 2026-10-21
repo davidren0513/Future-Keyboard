@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/iDvel/rime-ice",
+  "commit": "da1fbe602e38f26db846fa10120ee64c2b0324c0",
+  "files": [
+    "cn_dicts/8105.dict.yaml",
+    "cn_dicts/base.dict.yaml",
+    "cn_dicts/ext.dict.yaml",
+    "cn_dicts/others.dict.yaml"
+  ],
+  "entries": 890251,
+  "sha256": "cf345f2294cfa3f882f3dc26fb1277511b8c1a12a140d6969f8eb35da23e6b02"
+}

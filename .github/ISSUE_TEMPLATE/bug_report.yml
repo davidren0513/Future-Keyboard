@@ -1,0 +1,31 @@
+name: 问题反馈
+description: 反馈输入、候选、界面或兼容性问题
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: 请使用合成测试文字，不要上传真实聊天、个人词库、密码或其他敏感信息。
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      placeholder: 例如 0.6.0 debug
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 设备和系统
+      placeholder: 手机型号、Android 版本、屏幕方向及字号
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤与实际结果
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为与脱敏测试示例
